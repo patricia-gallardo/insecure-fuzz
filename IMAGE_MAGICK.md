@@ -33,11 +33,11 @@ export CXX=/usr/bin/afl-g++
 Set up test cases
 
 ~~~~bash
-mkdir in
-mkdir out
-cp images/*.jpg in/
-cp www/Magick++/*.jpg in/
-cp PerlMagick/t/jpeg/*.jpg in/
+mkdir afl_in
+mkdir afl_out
+cp images/*.jpg afl_in/
+cp www/Magick++/*.jpg afl_in/
+cp PerlMagick/t/jpeg/*.jpg afl_in/
 ~~~~
 
 Might need: root changes for AFL
