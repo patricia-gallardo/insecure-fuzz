@@ -26,8 +26,9 @@ Build
 cd ghostpdl
 
 export AFL_USE_ASAN=1
-export CC=/usr/bin/afl-gcc
-export CXX=/usr/bin/afl-g++
+export CC=/usr/bin/afl-clang-fast ./configure
+export CXX=/usr/bin/afl-clang-fast++ ./configure
+export AFL_INST_RATIO=100
 
 ./autogen.sh
 ./configure && make
@@ -37,9 +38,8 @@ export CXX=/usr/bin/afl-g++
 Set up test cases
 
 ~~~~bash
-mkdir afl_in
-mkdir afl_out
-cd afl_in
+mkdir afl_corpus afl_output
+cd afl_corpus
 wget https://people.sc.fsu.edu/~jburkardt/data/ps/bell_206.ps
 ~~~~
 
@@ -56,5 +56,5 @@ Run AFL
 (cat /usr/share/doc/afl-doc/docs/notes_for_asan.txt)
 
 ~~~~bash
-afl-fuzz -m none -i afl_in/ -o afl_out/ ./bin/gs -sDEVICE=pdfwrite -o output.pdf @@
+afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./bin/gs -sDEVICE=pdfwrite -o output.pdf @@
 ~~~~
