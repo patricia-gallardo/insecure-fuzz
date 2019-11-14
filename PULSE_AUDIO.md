@@ -52,9 +52,9 @@ export LD_LIBRARY_PATH=/home/patricia-gallardo/Code/pulseaudio/src/.libs/
 Set up test cases
 
 ~~~~bash
-mkdir afl_in
-mkdir afl_out
-echo "-" > afl_in/test.txt
+mkdir afl_corpus
+mkdir afl_output
+echo "-" > afl_corpus/test.txt
 ~~~~
 
 Might need: root changes for AFL
@@ -70,5 +70,5 @@ Run AFL
 (cat /usr/share/doc/afl-doc/docs/notes_for_asan.txt)
 
 ~~~~bash
-afl-fuzz -m none -i afl_in/ -o afl_out/ ./src/.libs/core-util-test @@
+afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./src/.libs/core-util-test @@
 ~~~~

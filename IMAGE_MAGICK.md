@@ -33,11 +33,11 @@ export CXX=/usr/bin/afl-g++
 Set up test cases
 
 ~~~~bash
-mkdir afl_in
-mkdir afl_out
-cp images/*.jpg afl_in/
-cp www/Magick++/*.jpg afl_in/
-cp PerlMagick/t/jpeg/*.jpg afl_in/
+mkdir afl_corpus
+mkdir afl_output
+cp images/*.jpg afl_corpus/
+cp www/Magick++/*.jpg afl_corpus/
+cp PerlMagick/t/jpeg/*.jpg afl_corpus/
 ~~~~
 
 Might need: root changes for AFL
@@ -53,5 +53,5 @@ Run AFL
 (cat /usr/share/doc/afl-doc/docs/notes_for_asan.txt)
 
 ~~~~bash
-afl-fuzz -m none -i in/ -o out/ ./utilities/magick convert @@ output.png
+afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./utilities/magick convert @@ output.png
 ~~~~
