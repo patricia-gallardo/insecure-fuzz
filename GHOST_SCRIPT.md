@@ -26,8 +26,8 @@ Build
 cd ghostpdl
 
 export AFL_USE_ASAN=1
-export CC=/usr/bin/afl-clang-fast ./configure
-export CXX=/usr/bin/afl-clang-fast++ ./configure
+export CC=/usr/bin/afl-clang-fast
+export CXX=/usr/bin/afl-clang-fast++
 export AFL_INST_RATIO=100
 
 ./autogen.sh
