@@ -31,8 +31,7 @@ export CC=/usr/bin/afl-clang-fast
 export CXX=/usr/bin/afl-clang-fast++
 export AFL_INST_RATIO=100
 
-./config && make
-cd ..
+./config && make && cd ..
 ~~~~
 
 Get Fuzz Target
