@@ -12,7 +12,7 @@ Install dependencies
 
 ~~~~
 
-Clone the repo
+Get the Code to be Fuzzed
 
 ~~~~bash
 git clone https://github.com/ImageMagick/ImageMagick.git
@@ -30,7 +30,17 @@ export CXX=/usr/bin/afl-g++
 ./configure --disable-shared && make
 ~~~~
 
-Set up test cases
+Get Fuzz Target
+
+~~~~bash
+~~~~
+
+Build Fuzz Target
+
+~~~~bash
+~~~~
+
+Set up Initial Corpus and Output directories
 
 ~~~~bash
 mkdir afl_corpus
@@ -40,17 +50,7 @@ cp www/Magick++/*.jpg afl_corpus/
 cp PerlMagick/t/jpeg/*.jpg afl_corpus/
 ~~~~
 
-Might need: root changes for AFL
-
-~~~~bash
-sudo su -
-echo core >/proc/sys/kernel/core_pattern
-cd /sys/devices/system/cpu
-echo performance | tee cpu*/cpufreq/scaling_governor
-~~~~
-
 Run AFL
-(cat /usr/share/doc/afl-doc/docs/notes_for_asan.txt)
 
 ~~~~bash
 afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./utilities/magick convert @@ output.png

@@ -14,7 +14,7 @@ Install dependencies
 
 ~~~~
 
-Get the Code
+Get the Code to be Fuzzed
 
 ~~~~bash
 curl -O https://www.openssl.org/source/openssl-1.0.1f.tar.gz
