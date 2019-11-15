@@ -1,5 +1,7 @@
 # Trying to fuzz MediaServer
 
+Notes: Needs C++17 - will need to build AFL
+
 Install AFL
 
 ~~~~bash
