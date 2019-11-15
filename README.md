@@ -2,6 +2,8 @@
 
 * [GhostScript](GHOST_SCRIPT.md): Works?
 * [ImageMagick](IMAGE_MAGICK.md): Works?
+* [MediaServer](MEDIA_SERVER.md): Needs work
+* [OpenSSL HeartBleed](OPEN_SSL_HB.md): Works?
 * [PulseAudio](PULSE_AUDIO.md): Needs work
 
 Things to try:
@@ -34,4 +36,15 @@ afl-cmin -i <input_folder> -o <output_folder> -- <binary> <options> @@
 Minimize the test
 ~~~~bash
 afl-tmin -i <test_case> -o <output> -- <binary> <options> @@
+~~~~
+
+# Notes
+Might need: root changes for AFL
+(cat /usr/share/doc/afl-doc/docs/notes_for_asan.txt)
+
+~~~~bash
+sudo su -
+echo core >/proc/sys/kernel/core_pattern
+cd /sys/devices/system/cpu
+echo performance | tee cpu*/cpufreq/scaling_governor
 ~~~~
