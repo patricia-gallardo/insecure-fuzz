@@ -22,6 +22,7 @@ Build
 
 ~~~~bash
 cd media-server/
+git submodule update --init --recursive
 
 export AFL_USE_ASAN=1
 export CC=/usr/bin/afl-clang-fast
