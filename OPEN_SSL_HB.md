@@ -61,3 +61,15 @@ Run AFL
 ~~~~bash
 afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./handshake-fuzzer @@
 ~~~~
+
+Reproduce crash
+
+~~~~bash
+./handshake-fuzzer afl_output/crashes/<file>
+~~~~
+
+Sample output
+
+~~~~bash
+==13465==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x629000009748 at pc 0x0000004beec1 bp 0x7ffd1ee4cfb0 sp 0x7ffd1ee4c760
+~~~~
