@@ -1,4 +1,4 @@
-# Trying to fuzz OpenSSL for HeartBleed
+# Trying to fuzz OpenSSL for HeartBleed with AFL
 
 Based on https://google.github.io/clusterfuzz/setting-up-fuzzing/heartbleed-example/
 
