@@ -37,7 +37,7 @@ export AFL_INST_RATIO=100
 Get Fuzz Target
 
 ~~~~bash
-curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/open_ssl_heartbleed/handshake-fuzzer.cc
+curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/open_ssl_heartbleed/afl_handshake_fuzzer.cc
 curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/open_ssl_heartbleed/server.key
 curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/open_ssl_heartbleed/server.pem
 ~~~~
@@ -45,7 +45,7 @@ curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master
 Build Fuzz Target
 
 ~~~~bash
-$CXX -g handshake-fuzzer.cc openssl-1.0.1f/libssl.a openssl-1.0.1f/libcrypto.a -std=c++14 -Iopenssl-1.0.1f/include/ -lstdc++fs -ldl -lstdc++ -o handshake-fuzzer
+$CXX -g afl_handshake_fuzzer.cc openssl-1.0.1f/libssl.a openssl-1.0.1f/libcrypto.a -std=c++14 -Iopenssl-1.0.1f/include/ -lstdc++fs -ldl -lstdc++ -o afl_handshake_fuzzer
 ~~~~
 
 Set up Initial Corpus and Output directories
@@ -58,13 +58,13 @@ echo "-" > afl_corpus/test.txt
 Run AFL
 
 ~~~~bash
-afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./handshake-fuzzer @@
+afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./afl_handshake_fuzzer @@
 ~~~~
 
 Reproduce crash
 
 ~~~~bash
-./handshake-fuzzer afl_output/crashes/<file>
+./afl_handshake_fuzzer afl_output/crashes/<file>
 ~~~~
 
 Sample output
