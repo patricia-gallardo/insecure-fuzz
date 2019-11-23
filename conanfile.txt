@@ -1,0 +1,9 @@
+[generators]
+cmake
+virtualrunenv
+
+[requires]
+
+[options]
+
+[imports]
