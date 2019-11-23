@@ -3,6 +3,7 @@ cmake
 virtualrunenv
 
 [requires]
+OpenSSL/1.0.2o@conan/stable
 
 [options]
 
