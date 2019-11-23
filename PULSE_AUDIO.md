@@ -1,8 +1,4 @@
-# Trying to fuzz PulseAudio
-
-TODO:
-
-**Needs a proper commandline binary**
+# Running PulseAudio tests with ASan and the AFL compilers
 
 Install AFL
 
@@ -30,6 +26,7 @@ cd pulseaudio
 export AFL_USE_ASAN=1
 export CC=/usr/bin/afl-gcc
 export CXX=/usr/bin/afl-g++
+export AFL_INST_RATIO=100
 
 NOCONFIGURE=1 ./bootstrap.sh
 
@@ -45,30 +42,6 @@ cat src/test-suite.log
 Run the failing test
 
 ~~~~bash
-export LD_LIBRARY_PATH=/home/patricia-gallardo/Code/pulseaudio/src/.libs/
+export LD_LIBRARY_PATH=<path to the checkout>/pulseaudio/src/.libs/
 ./src/.libs/core-util-test
-~~~~
-
-Get Fuzz Target
-
-~~~~bash
-~~~~
-
-Build Fuzz Target
-
-~~~~bash
-~~~~
-
-Set up Initial Corpus and Output directories
-
-~~~~bash
-mkdir afl_corpus
-mkdir afl_output
-echo "-" > afl_corpus/test.txt
-~~~~
-
-Run AFL
-
-~~~~bash
-afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./src/.libs/core-util-test @@
 ~~~~
