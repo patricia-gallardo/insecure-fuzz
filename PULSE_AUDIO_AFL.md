@@ -49,12 +49,15 @@ Set up Initial Corpus and Output directories
 
 ~~~~bash
 mkdir afl_corpus afl_output
-echo "-" > afl_corpus/test.txt
+cd afl_corpus
+curl -O https://raw.githubusercontent.com/qt/qtmultimedia/dev/tests/auto/integration/qaudiodecoderbackend/testdata/test.wav
+cd ..
 ~~~~
 
 Run AFL
 
 ~~~~bash
+export LD_LIBRARY_PATH=<path to the checkout>/pulseaudio/src/.libs/
 afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./pacat_simple @@
 ~~~~
 
