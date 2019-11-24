@@ -36,13 +36,13 @@ NOCONFIGURE=1 ./bootstrap.sh
 Get Fuzz Target
 
 ~~~~bash
-curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/fuzz_targets/pulse_audio/pacat-simple.c
+curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/fuzz_targets/pulse_audio/afl_pacat_simple.c
 ~~~~
 
 Build Fuzz Target
 
 ~~~~bash
-$CC -g pacat-simple.c pulseaudio/src/.libs/libpulse-simple.so pulseaudio/src/.libs/libpulse.so -o pacat_simple
+$CC -g afl_pacat_simple.c pulseaudio/src/.libs/libpulse-simple.so pulseaudio/src/.libs/libpulse.so -o afl_pacat_simple
 ~~~~
 
 Set up Initial Corpus and Output directories
@@ -58,13 +58,13 @@ Run AFL
 
 ~~~~bash
 export LD_LIBRARY_PATH=<path to the checkout>/pulseaudio/src/.libs/
-afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./pacat_simple @@
+afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./afl_pacat_simple @@
 ~~~~
 
 Reproduce crash
 
 ~~~~bash
-./pacat_simple afl_output/crashes/<file>
+./afl_pacat_simple afl_output/crashes/<file>
 ~~~~
 
 Sample output
