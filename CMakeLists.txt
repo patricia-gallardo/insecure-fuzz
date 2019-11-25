@@ -40,6 +40,12 @@ set_target_properties(lib_fuzzer_handshake_fuzzer PROPERTIES
 find_library(PULSE_LIB pulse)
 find_library(PULSESIMPLE_LIB pulse-simple)
 
+add_executable(lib_fuzzer_pacat_simple fuzz_targets/pulse_audio/lib_fuzzer_pacat_simple.c)
+target_link_libraries(lib_fuzzer_pacat_simple ${PULSE_LIB} ${PULSESIMPLE_LIB})
+set_target_properties(lib_fuzzer_pacat_simple PROPERTIES
+        LINK_FLAGS -fsanitize=address,fuzzer
+        COMPILE_FLAGS -fsanitize=address,fuzzer)
+
 add_executable(afl_pacat_simple fuzz_targets/pulse_audio/afl_pacat_simple.c)
 target_link_libraries(afl_pacat_simple ${PULSE_LIB} ${PULSESIMPLE_LIB})
 
