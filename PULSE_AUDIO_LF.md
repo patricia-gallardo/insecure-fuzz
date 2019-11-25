@@ -1,9 +1,9 @@
-# Trying to fuzz PulseAudio with AFL
+# Trying to fuzz PulseAudio with LibFuzzer
 
-Install AFL
+Install Clang
 
 ~~~~bash
-sudo apt install afl afl-clang afl-cov afl-doc
+sudo apt install clang
 ~~~~
 
 Install dependencies
