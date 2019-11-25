@@ -36,7 +36,7 @@ NOCONFIGURE=1 ./bootstrap.sh
 Get Fuzz Target
 
 ~~~~bash
-curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/fuzz_targets/pulse_audio/afl_pacat_simple.c
+curl -O https://raw.githubusercontent.com/patricia-gallardo/insecure-fuzz/master/fuzz_targets/pulse_audio/afl_pacat_simple.c
 ~~~~
 
 Build Fuzz Target
