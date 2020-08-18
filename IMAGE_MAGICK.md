@@ -54,6 +54,7 @@ cp ./ImageMagick/PerlMagick/t/input.bmp afl_corpus/
 Run AFL
 
 ~~~~bash
+export MAGICK_CONFIGURE_PATH="<path to checkout>/ImageMagick/config"
 afl-fuzz -m none -i afl_corpus/ -o afl_output/ ./ImageMagick/utilities/magick convert @@ output.ps
 ~~~~
 
